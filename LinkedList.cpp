@@ -25,8 +25,23 @@ void insertBack(ln* &head,int data)
     p->next=temp;
 }
 
+/*reverse a linked list*/
+void reverse(ln* &A)
+{
+    ln* cur=A;
+    ln* prev=NULL;
+    while(cur!=NULL)
+    {
+        ln* temp=cur->next;
+        cur->next=prev;
+        prev=cur;
+        cur=temp;
+    }
+    A=prev;
+}
+
 /*insertion sort for linked list in O(n*n)*/
-ListNode* insertionSort(ListNode* &A) {
+void insertionSort(ListNode* &A) {
     ln* head=A;
     if(head==NULL)
     return A;
@@ -195,15 +210,7 @@ int main()
     
     ListNode* head=NULL;
     
-    /*insertion by taking input*/
-    // int n;cin>>n;
-    // while(n--)
-    // {
-    //     int x;cin>>x;
-    //     insertBack(head,x);
-    // }
-    
-    /*insertion at end*/
+    /*insertion*/
     insertBack(head,1);
     insertBack(head,5);
     insertBack(head,4);
@@ -217,6 +224,7 @@ int main()
     cout<<"\n";
     
     // mergeSort(head);
+    // reverse(head);
     // insertionSort(head);
 
     print(head);
