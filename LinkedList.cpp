@@ -140,6 +140,41 @@ void mergeSort(ListNode* &A){
     A = merge(A,md);
 }
 
+/* to detect cycle in list and return first node of cycle in O(2*n) */
+ListNode* detectCycle(ListNode* A) {
+    if(A==NULL)
+    return A;
+    ListNode* s=A->next,*f;
+    if(s!=NULL)
+    f=s->next;
+    else
+    return NULL;
+    
+    bool b=false;
+    
+    while(s!=NULL&&f!=NULL&&f->next!=NULL)
+    {
+        if(s==f)
+        {
+            b=true;
+            break;
+        }
+        s=s->next;
+        f=f->next->next;
+    }
+    if(!b)
+    return NULL;
+    
+    f=A;
+    
+    while(s!=f)
+    {
+        s=s->next;
+        f=f->next;
+    }
+    return f;
+}
+
 /*print linked list O(n)*/
 void print(ln* head)
 {
