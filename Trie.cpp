@@ -1,10 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-/* node for a trie */
+/* struct for node of a trie */
 struct trie{
-  bool isLast; 
-  trie* a[26];
+  bool isLast; //true if a string is ending here
+  trie* a[26]; //pointer to next 26 nodes (26 is no of alphabets)
+  //making all pointers NULL in default constructor
   trie(){
       isLast=false;
       for(int i=0;i<26;i++)
@@ -28,7 +29,7 @@ void insert(string &s,trie* &root)
 }
  
 /* search a string*/
-bool search(trie* &root,string &s)
+bool search(string &s,trie* &root)
 {
     trie* p=root;
     for(int i=0;i<s.size();i++)
@@ -44,5 +45,13 @@ bool search(trie* &root,string &s)
 
 int main()
 {
+  trie* root=new trie();  //creating root node for tree
+  
+  //inserting strings
+  insert("anant",root);
+  insert("github",root);
+  
+  //searching strings
+  bool ans=search("anant",root);
   
 }
