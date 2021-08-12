@@ -113,7 +113,7 @@ void postOrder(Node* node)
     }
     while(!stk.empty())
     {
-        cout<<s.top()<<" ";   //code here as required
+        cout<<s.top()->val<<" ";   //code here as required
         stk.pop();
     }
 }
