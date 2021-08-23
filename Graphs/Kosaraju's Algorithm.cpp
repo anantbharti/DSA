@@ -76,6 +76,7 @@ int main()
             cout<<x<<" ";
         cout<<"\n";
     }
+    
     return 0;
 }
 
