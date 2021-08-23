@@ -3,7 +3,7 @@
  * Used even if negative weighted edges are present but no negative weight cycle should be present.
  * Used to detect negative weight edge cycle.
  * Time complexity :- O(V*E)
-*/
+ */
 
 #include <bits/stdc++.h>
 using namespace std;
