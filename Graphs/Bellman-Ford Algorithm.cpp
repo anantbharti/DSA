@@ -48,5 +48,5 @@ int main()
 
     for(int i=0;i<n;i++)
         cout<<dis[i]<<"\n";
-    return 0;
+    return 0; 
 }
