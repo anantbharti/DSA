@@ -7,16 +7,16 @@
 using namespace std;
 #define ll long long
 
-vector<pair<int,int>> adj[101];
+vector<pair<int,int>> adj[101];     // adjacency list 
 priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>> pq;
 vector<bool> vis;
-vector<vector<int>> mst;
-int n,no_of_nodes;
-int ans;
+vector<vector<int>> mst;     // edges with weight in minimum spanning tree
+int n,no_of_nodes;      // no_of_nodes is current no of nodes included in mst during dfs.
+int ans;        // total weight of minimum spanning tree
 
 void dfs(int node,int par)
 {
-    if(no_of_nodes==n)return;
+    if(no_of_nodes==n)return;  
     no_of_nodes++;
     vis[node]=true;
     
