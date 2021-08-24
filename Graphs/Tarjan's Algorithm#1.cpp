@@ -32,7 +32,7 @@ void dfs(int node,int par)
             // forward edge
             dfs(x,node);
             low[node]=min(low[node],low[x]);
-            if(low[node]<low[x])
+            if(in[node]<low[x])
                 bridges.push_back({node,x});
         }
     }
