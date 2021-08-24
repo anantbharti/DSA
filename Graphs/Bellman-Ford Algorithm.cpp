@@ -1,7 +1,8 @@
 /*
  * Used to find shortest distance between given node and all other nodes.
- * Used even if negative weighted edges are present but no negative weight cycle should be present.
- * Used to detect negative weight edge cycle.
+ * Used even if negative weighted edges are present.
+ * Used to detect negative weight edge cycle :- we find the shortest distance from source node to all nodes by relaxing distances exactly V-1 times.
+ * If any of the shortest distances changes in Vth iteration the it has a negative weight cycle.
  * Time complexity :- O(V*E)
  */
 
