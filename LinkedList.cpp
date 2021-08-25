@@ -72,8 +72,8 @@ void insertionSort(ListNode* &A) {
     A=head;
 }
 
-/*finding middle node of linked list in O(n)*/
-/*returns (n/2)th element if n is even*/
+/* finding middle node of linked list in O(n) */
+/* returns (n/2)th element if n is even */
 ln* middle(ln* head)
 {
     if(head==NULL)
@@ -87,7 +87,7 @@ ln* middle(ln* head)
     return s;
 }
 
-/*merge used in merge sort*/
+/* merge used in merge sort */
 ln* merge(ln* a,ln* b)
 {
     if(a==NULL)
@@ -141,7 +141,7 @@ ln* merge(ln* a,ln* b)
     return head;
 }
 
-/*merge sort for linked list in O(n*log(n))*/
+/* merge sort for linked list in O(n*log(n)) */
 void mergeSort(ListNode* &A){
     if(A==NULL||A->next==NULL)
     return;
@@ -159,23 +159,20 @@ void mergeSort(ListNode* &A){
 ListNode* detectCycle(ListNode* A) {
     if(A==NULL)
     return A;
-    ListNode* s=A->next,*f;
-    if(s!=NULL)
-    f=s->next;
-    else
-    return NULL;
+    ListNode* s=A;
+    ListNode* f=A;
     
     bool b=false;
     
     while(s!=NULL&&f!=NULL&&f->next!=NULL)
     {
+        s=s->next;
+        f=f->next->next;
         if(s==f)
         {
             b=true;
             break;
         }
-        s=s->next;
-        f=f->next->next;
     }
     if(!b)
     return NULL;
@@ -190,7 +187,7 @@ ListNode* detectCycle(ListNode* A) {
     return f;
 }
 
-/*print linked list O(n)*/
+/* print linked list O(n) */
 void print(ln* head)
 {
 	ln* p=head;
