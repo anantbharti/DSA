@@ -42,8 +42,8 @@ vector<int> search(string str, string sub)
         }
         if(j==sub.size())
         {
-            ind.push_back(i-1);
-            j=pi[j-1];
+            ind.push_back(i-sub.size());
+            j=lps[j-1];
         }
     }
     return ind;
