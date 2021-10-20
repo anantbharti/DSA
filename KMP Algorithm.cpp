@@ -19,11 +19,13 @@ vector<int> LPS(string s)
     return pi;
 }
 
-/*search string sub in string str*/
-bool search(string str, string sub)
+/*find all starting index where sub is found*/
+vector<int> search(string str, string sub)
 {
     vector<int> lps=LPS(sub);
     int i(0),j(0);
+    vector<int> ind;
+    
     while(i<str.size())
     {
         if(str[i]==sub[j])
@@ -39,15 +41,20 @@ bool search(string str, string sub)
                 i++;
         }
         if(j==sub.size())
-            return true;
+        {
+            ind.push_back(i-1);
+            j=pi[j-1];
+        }
     }
-    return false;
+    return ind;
 }
 int main()
 {
     ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
-    
-    cout<<search("anant","ant");
+     
+    vector<int> ans=search("anant","ant");
+    for(auto it:ans)
+        cout<<it<<" ";
     return 0;
 }
 
