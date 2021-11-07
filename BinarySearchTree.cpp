@@ -11,7 +11,7 @@ struct TreeNode {
 
 typedef TreeNode tn;
 
-/* insert an element */
+/* insert an element data*/
 void insert(tn* &root, int data)
 {
 	tn* temp=new tn(data);
@@ -23,6 +23,39 @@ void insert(tn* &root, int data)
         insert(root->left,data);
     else 
         return;
+}
+
+/* delete an element x */
+tn* remove(tn* root,int x)
+{
+    if(!root)return root;
+    if(root->val>x)
+        root->left=remove(root->left,x);
+    else if(root->val<x)
+        root->right=remove(root->right,x);
+    else
+    {
+        if(!root->left&&!root->right)
+            return NULL;
+        if(!root->left)
+        {
+            tn* temp=root->right;
+            free(root);
+            return temp;
+        }
+        if(!root->right)
+        {
+            tn* temp=root->left;
+            free(root);
+            return temp;
+        }
+
+        tn* temp=inorderSuccessor(root->right);
+        root->val=temp->val;
+        root->right=remove(root->right,root->data);
+
+        return root;
+    }
 }
 
 /* recursive tree traversal */
@@ -130,6 +163,9 @@ int main()
     insert(tree,3);
     insert(tree,5);
     insert(tree,6);
+	
+    // take the return tree while removing element
+    tree = remove(tree,5);  
 
     print(tree);
     return 0;        
