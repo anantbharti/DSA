@@ -14,19 +14,19 @@ vector<ll> dis;                   // to store min distances
 void dijkstra(int node)
 {
     priority_queue<pair<ll,int>,vector<pair<ll,int>>,greater<pair<ll,int>>> pq;
-    pq.push({node,0});
+    pq.push({0,node});
     dis[node]=0;
     while(!pq.empty())
     {
-        int cur=pq.top().first;
-        ll d=pq.top().second;
+        int cur=pq.top().second;
+        ll d=pq.top().first;
         pq.pop();
         for(auto child:adj[cur])
         {
             if(dis[child.first]>d+child.second)
             {
                 dis[child.first]=d+child.second;
-                pq.push({child.first,d+child.second});
+                pq.push({d+child.second,child.first});
             }
         }
     }
